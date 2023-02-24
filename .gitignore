@@ -2,3 +2,4 @@ __pycache__
 yolov5
 datasets
 *.pt
+data.txt
