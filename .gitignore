@@ -1,6 +1,4 @@
 __pycache__
 yolov5
-*.docx
-*.tmp
 datasets
 *.pt
