@@ -1,0 +1,9 @@
+matplotlib
+seaborn
+requests
+pyyaml
+psutil
+Pillow
+pandas
+opencv-python
+tqdm
