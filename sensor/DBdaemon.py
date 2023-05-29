@@ -112,7 +112,7 @@ def printData1():
 
     print(f"Temp: {temperature1}\tHumi: {humidity1}\t", end="")
 
-    time.sleep(1)
+    #time.sleep(1)
 
 
 """
@@ -144,7 +144,7 @@ def printData3():
             print("UVS: %d\tUVI: %f\r\n" % (uvs, uvi))
             light_Data1 = uvs
             light_Data2 = round(uvi, 2)
-    time.sleep(0.5)
+   # time.sleep(0.5)
 
 
 if __name__ == "__main__":

@@ -2,7 +2,10 @@ import os
 import psycopg2
 from flask import Flask, render_template,request, url_for, redirect,jsonify
 
-
+HOST='::'
+#HOST='0.0.0.0'
+PORT=5001
+LIMIT = 10
 app = Flask(__name__)
 
 def get_db_connection():
@@ -30,10 +33,13 @@ def sensor1():
     elif end_tis_tamp:
         sql += ' WHERE tistamp <= %s'
 
+    sql += ' order by tistamp '
     if limit:
+        sql += f' OFFSET (SELECT COUNT(*) FROM sensor2) - {limit}'
         sql += ' LIMIT %s' % (limit)
     else:
-        sql += ' LIMIT 5'
+        sql += f' OFFSET (SELECT COUNT(*) FROM sensor2) - {LIMIT}'
+        sql += ' LIMIT %s' % (LIMIT)
 
     cur = conn.cursor()
     if start_tis_tamp and end_tis_tamp:
@@ -67,11 +73,14 @@ def sensor2():
         sql += ' WHERE tistamp >= %s'
     elif end_tis_tamp:
         sql += ' WHERE tistamp <= %s'
-
+    
+    sql += ' order by tistamp '
     if limit:
+        sql += f' OFFSET (SELECT COUNT(*) FROM sensor2) - {limit}'
         sql += ' LIMIT %s' % (limit)
     else:
-        sql += ' LIMIT 5'
+        sql += f' OFFSET (SELECT COUNT(*) FROM sensor2) - {LIMIT}'
+        sql += ' LIMIT %s' % (LIMIT)
 
     cur = conn.cursor()
     if end_tis_tamp and start_tis_tamp:
@@ -88,3 +97,6 @@ def sensor2():
     response = jsonify(measuredatas)
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
+
+if __name__ == '__main__':
+    app.run(host=HOST, port=PORT, debug =True)
