@@ -1,0 +1,26 @@
+measure.py 第一版，启动传感器，终端上打印数据
+begin.py 第二版，启动传感器，终端上打印数据并且传入数据库
+databaseTest 连接数据库测试
+sensor.py 开机自启动传感器，数据传入数据库
+
+
+开机自启动更新时间的程序
+systemctl enable ntp
+
+开机自启动ENS210 传感器
+    启动文件在/usr/lib/systemd/system/ENS210_systemd.service
+    执行文件在/home/pi/environment_check/sensor/ENS210/ENS210_systemctl.py
+    参考：https://blog.csdn.net/qq_32526087/article/details/119749810
+
+开机自启动flask后端
+    启动文件在/usr/lib/systemd/system/app_systemd.service
+    执行文件在/home/pi/environment_check/app/app.py
+
+服务器自启动
+    启动文件在/usr/lib/systemd/system/service_systend.service
+    执行文件在/opt/pistreaming/server.py
+
+传入数据库自启动
+    启动文件在/usr/lib/systemd/system/sensor_systemd.service
+    执行文件在/home/pi/environment_check/sensor/begin.py
+
