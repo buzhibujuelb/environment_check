@@ -13,14 +13,14 @@ systemctl enable ntp
     参考：https://blog.csdn.net/qq_32526087/article/details/119749810
 
 开机自启动flask后端
-    启动文件在/usr/lib/systemd/system/app_systemd.service
+    启动文件在/usr/lib/systemd/system/flask.service
     执行文件在/home/pi/environment_check/app/app.py
 
-服务器自启动
-    启动文件在/usr/lib/systemd/system/service_systend.service
+推流服务器自启动
+    启动文件在/usr/lib/systemd/system/stream.service
     执行文件在/opt/pistreaming/server.py
 
 传入数据库自启动
-    启动文件在/usr/lib/systemd/system/sensor_systemd.service
+    启动文件在/usr/lib/systemd/system/sensor.service
     执行文件在/home/pi/environment_check/sensor/begin.py
 

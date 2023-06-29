@@ -1,0 +1,18 @@
+[Unit]
+# 必须执行网络
+Requires=network-online.target
+# 在网络启动后启动程序
+After=network-online.target ENS210_systemd.service
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+Restart=on-failure
+RestartSec=5s
+
+# 需要自启动的代码
+ExecStart=python /home/pi/environment_check/app/app.py
+
+[Install]
+WantedBy=multi-user.target
